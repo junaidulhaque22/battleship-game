@@ -1,0 +1,114 @@
+@import "./../../Main.scss";
+
+.boxRow {
+    display: flex;
+}
+
+.playField {
+    display: flex;
+    margin-top: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
+    justify-content: space-between;
+}
+
+.playerSide {
+    border: 2px solid black;
+}
+
+.square {
+    width: $boxSize;
+    height: $boxSize;
+    background: $gridColor;
+    border: 1px solid $borderColor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+.horizontal {
+    border: 5px solid blue;
+    border-radius: 10%;
+    width: $boxSize;
+    height: $boxSize/3;
+    margin-left: $boxSize/2;
+    position: fixed;
+    z-index: 2;
+}
+
+.vertical {
+    border: 5px solid blue;
+    border-radius: 10%;
+    width: $boxSize/3;
+    height: $boxSize;
+    margin-top: $boxSize/2;
+    position: fixed;
+    z-index: 2;
+}
+
+.hs {
+    border-top: 5px solid blue;
+    border-bottom: 5px solid blue;
+    border-left: 5px solid blue;
+    border-radius: 10%;
+    width: $boxSize/2;
+    height: $boxSize/3;
+    margin-left: $boxSize/4;
+    position: fixed;
+    z-index: 2;
+}
+
+.he {
+    border-top: 5px solid blue;
+    border-bottom: 5px solid blue;
+    border-right: 5px solid blue;
+    border-radius: 10%;
+    width: $boxSize/2;
+    height: $boxSize/3;
+    margin-left: -($boxSize/4);
+    position: fixed;
+    z-index: 2;
+}
+
+.vs {
+    border-top: 5px solid blue;
+    border-right: 5px solid blue;
+    border-left: 5px solid blue;
+    border-radius: 10%;
+    width: $boxSize/3;
+    height: $boxSize/2;
+    margin-top: $boxSize/4;
+    position: fixed;
+    z-index: 2;
+}
+
+.ve {
+    border-bottom: 5px solid blue;
+    border-right: 5px solid blue;
+    border-left: 5px solid blue;
+    border-radius: 10%;
+    width: $boxSize/3;
+    height: $boxSize/2;
+    margin-top: -($boxSize/4);
+    position: fixed;
+    z-index: 2;
+}
+
+.o {
+    background-color: $hoverCircle;
+    border-radius: 50%;
+    width: $boxSize/2;
+    height: $boxSize/2;
+}
+
+.focus {
+    border: 5px solid $hoverCircle;
+    border-radius: 50%;
+    width: $boxSize/2;
+    height: $boxSize/2;
+}
+
+.x { 
+    font-size: $boxSize/2;
+}
