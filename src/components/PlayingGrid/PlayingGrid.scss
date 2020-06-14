@@ -6,14 +6,20 @@
 
 .playField {
     display: flex;
-    margin-top: 5%;
+    margin-top: 2%;
     padding-left: 10%;
     padding-right: 10%;
     justify-content: space-between;
 }
 
+.playerSideActive {
+    border: 2px solid $hoverCircle;
+    margin-bottom: 3%;
+}
+
 .playerSide {
-    border: 2px solid black;
+    border: 2px solid $gridColor;
+    margin-bottom: 3%;
 }
 
 .square {
@@ -111,4 +117,34 @@
 
 .x { 
     font-size: $boxSize/2;
+    color: $hoverCircle;
+}
+
+.settingInfo {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gameInfo {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.status{
+    margin-top: 2%;
+    font-size: 25px;
+}
+
+.playerMessage {
+    min-height: 21px;
+    color: red;
+}
+
+.restartWrapper{
+    display: flex;
+    justify-content: center;
 }
