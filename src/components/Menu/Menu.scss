@@ -1,0 +1,83 @@
+@import "./../../Main.scss";
+
+.menu {
+    display: flex;
+    justify-content: center;
+    min-height: 80vh;
+    align-items: center;
+}
+.startWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.menuWrapper {
+    width: 40%;
+    min-height: 50vh;
+    border: 2px solid $navColor;
+    border-radius: 10px;
+    color: $navColor;
+}
+
+.menuTop {
+    font-size: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.menuIcon {
+    height: 45px;
+    width: 45px;
+    margin-right: 7px;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.gridItem{
+    display: flex;
+    align-items: center;
+}
+
+.selectionWrapper{
+    display: flex;
+    align-items: center;
+    min-height: 75px;
+    width: 90%;
+    margin-left: 10%;
+}
+
+.selection{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.selectionBox{
+    font-size: 20px;
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+.menuArrow {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.menuEntry{
+    font-size: 20px;
+    text-align: right;
+    width: 90%;
+}

@@ -1,3 +1,5 @@
-export const shipInfo = [{ horizontal: true, length: 2 }, { horizontal: false, length: 2 }, { horizontal: true, length: 2 }]
+export const possibleGrids = [5, 7];
 
-export const num = 5
+export const possibleShips = [4, 6, 8];
+
+export const cpuMode = true;

@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Square from './GameSquare/GameSquare';
+import Square from './CpuSquare/CpuSquare';
 import { toggleNextMove, setGameState, GameStates } from '../../../actions';
 
 import '../PlayingGrid.scss';
 
-const PlayingGrid = ({ playerNum, active }) => {
+const CpuGrid = ({ playerNum, active }) => {
     const dispatch = useDispatch();
     const locationGrid = useSelector((state) => state.locationInfo[playerNum]);
     const shipLocation = useSelector((state) => state.shipLocation[playerNum]);
@@ -17,7 +17,7 @@ const PlayingGrid = ({ playerNum, active }) => {
         new Array(gridSize).fill(-2).map(() => new Array(gridSize).fill(-2)),
     );
     const [displayGrid, setDisplayGrid] = React.useState(new Array(gridSize).fill('n').map(() => new Array(gridSize).fill('n')));
-    const [numDiscovered, setNumDiscovered] = React.useState(0);
+    const [discovered, setDiscovered] = React.useState([]);
 
     const drawShips = (ships, grid) => {
         const tempGrid = [...grid];
@@ -53,8 +53,8 @@ const PlayingGrid = ({ playerNum, active }) => {
                 if (item === shipInfo[index].length) discoveredShips.push(index);
             });
 
-            for (let i = 0; i < tempGuessGrid.length; i++) {
-                for (let j = 0; j < tempGuessGrid.length; j++) {
+            for (let i = 0; i < tempGuessGrid.length; i += 1) {
+                for (let j = 0; j < tempGuessGrid.length; j += 1) {
                     if (tempGuessGrid[i][j] === -1) tempDisplayGrid[i][j] = 'x';
                     else if (tempGuessGrid[i][j] > -1 && !discoveredShips.includes(tempGuessGrid[i][j])) {
                         tempDisplayGrid[i][j] = 'o';
@@ -64,7 +64,7 @@ const PlayingGrid = ({ playerNum, active }) => {
             tempDisplayGrid = drawShips(discoveredShips, tempDisplayGrid);
             setGuessGrid(tempGuessGrid);
             setDisplayGrid(tempDisplayGrid);
-            setNumDiscovered(discoveredShips.length);
+            setDiscovered(discoveredShips);
             dispatch(toggleNextMove());
             if (discoveredShips.length === shipInfo.length) {
                 if (playerNum === 0) dispatch(setGameState(GameStates.P1COMPLETE));
@@ -73,9 +73,50 @@ const PlayingGrid = ({ playerNum, active }) => {
         }
     };
 
+    const calculateBestGuess = () => {
+        let verticalLeft = false;
+        let horizontalLeft = false;
+        shipInfo.forEach((element, i) => {
+            if (!discovered.includes(i)) {
+                if (element.horizontal) horizontalLeft = true;
+                else verticalLeft = true;
+            }
+        });
+        let item = {};
+        const priority = [];
+        const possible = [];
+        for (let i = 0; i < gridSize; i += 1) {
+            for (let j = 0; j < gridSize; j += 1) {
+                if (guessGrid[i][j] === -2) {
+                    if (verticalLeft && i - 1 >= 0 && guessGrid[i - 1][j] !== -1 && displayGrid[i - 1][j] === 'o') {
+                        priority.push({ i, j });
+                    } else if (verticalLeft && i + 1 <= 4 && guessGrid[i + 1][j] !== -1 && displayGrid[i + 1][j] === 'o') {
+                        priority.push({ i, j });
+                    } else if (horizontalLeft && j - 1 >= 0 && guessGrid[i][j - 1] !== -1 && displayGrid[i][j - 1] === 'o') {
+                        priority.push({ i, j });
+                    } else if (horizontalLeft && j + 1 <= 5 && guessGrid[i][j + 1] !== -1 && displayGrid[i][j + 1] === 'o') {
+                        priority.push({ i, j });
+                    } else {
+                        possible.push({ i, j });
+                    }
+                }
+            }
+        }
+        if (priority.length > 0) item = priority[Math.floor(Math.random() * priority.length)];
+        else item = possible[Math.floor(Math.random() * possible.length)];
+        return item;
+    };
+
+    React.useEffect(() => {
+        if (active === true) {
+            const guess = calculateBestGuess();
+            handleSquareClick(guess.j, guess.i);
+        }
+    }, [active]);
+
     return (
         <div>
-            <div className ="playerMessage"></div>
+            <div className="playerMessage"></div>
             {
                 [...Array(gridSize)].map((e, i) => <div className="boxRow" key={i}>
                     {[...Array(gridSize)].map((e, j) => <Square key={j.toString() + i.toString()} displayType={displayGrid[i][j]} isActive={active}
@@ -85,10 +126,10 @@ const PlayingGrid = ({ playerNum, active }) => {
                 </div>)
             }
             <div className="gameInfo">
-                {`Ships Discovered: ${numDiscovered}/${shipInfo.length}`}
+                {`Ships Discovered: ${discovered.length}/${shipInfo.length}`}
             </div>
         </div>
     );
 };
 
-export default PlayingGrid;
+export default CpuGrid;

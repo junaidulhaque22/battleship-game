@@ -1,20 +1,14 @@
 import { combineReducers } from 'redux';
 import { GameStates } from '../actions';
-import { num } from '../config';
 
-// Create and push grid twice for each player
-const initialLocationInfo = [];
-
-for (let i = 0; i < 2; i++) {
-    initialLocationInfo.push(new Array(num).fill(-1).map(() => new Array(num).fill(-1)));
-}
+const initialLocationInfo = [[], []];
 
 const initialShipLocation = [[], []];
 
 const locationInfo = (state = initialLocationInfo, action) => {
+    const newState = [...state];
     switch (action.type) {
     case 'SET_LOCATION_INFO':
-        const newState = [...state];
         newState[action.playerNum] = action.locationInfo;
         return newState;
     default:
@@ -23,9 +17,9 @@ const locationInfo = (state = initialLocationInfo, action) => {
 };
 
 const shipLocation = (state = initialShipLocation, action) => {
+    const newState = [...state];
     switch (action.type) {
     case 'SET_SHIP_LOCATION':
-        const newState = [...state];
         newState[action.playerNum] = action.shipLocation;
         return newState;
     default:
@@ -42,7 +36,7 @@ const gameState = (state = GameStates.SETTING, action) => {
     }
 };
 
-const nextMove = (state = 0, action) => {
+const nextMove = (state = 1, action) => {
     switch (action.type) {
     case 'TOGGLE_NEXT_MOVE':
         if (state === 1) return 0;
@@ -61,10 +55,50 @@ const p1Ready = (state = false, action) => {
     }
 };
 
+const cpuMode = (state = true, action) => {
+    switch (action.type) {
+    case 'TOGGLE_CPU_MODE':
+        return !state;
+    default:
+        return state;
+    }
+};
+
+const startGame = (state = false, action) => {
+    switch (action.type) {
+    case 'TOGGLE_START_GAME':
+        return !state;
+    default:
+        return state;
+    }
+};
+
+const shipInfo = (state = [], action) => {
+    switch (action.type) {
+    case 'SET_SHIP_INFO':
+        return action.shipInfo;
+    default:
+        return state;
+    }
+};
+
+const gridSize = (state = [], action) => {
+    switch (action.type) {
+    case 'SET_GRID_SIZE':
+        return action.gridSize;
+    default:
+        return state;
+    }
+};
+
 export default combineReducers({
     gameState,
     shipLocation,
     locationInfo,
     nextMove,
     p1Ready,
+    cpuMode,
+    startGame,
+    shipInfo,
+    gridSize,
 });

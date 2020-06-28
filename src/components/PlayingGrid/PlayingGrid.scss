@@ -7,9 +7,10 @@
 .playField {
     display: flex;
     margin-top: 2%;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 9%;
+    padding-right: 9%;
     justify-content: space-between;
+    text-align: center;
 }
 
 .playerSideActive {
@@ -39,7 +40,7 @@
     width: $boxSize;
     height: $boxSize/3;
     margin-left: $boxSize/2;
-    position: fixed;
+    position: absolute;
     z-index: 2;
 }
 
@@ -49,7 +50,7 @@
     width: $boxSize/3;
     height: $boxSize;
     margin-top: $boxSize/2;
-    position: fixed;
+    position: absolute;
     z-index: 2;
 }
 
@@ -61,7 +62,7 @@
     width: $boxSize/2;
     height: $boxSize/3;
     margin-left: $boxSize/4;
-    position: fixed;
+    position: absolute;
     z-index: 2;
 }
 
@@ -73,7 +74,7 @@
     width: $boxSize/2;
     height: $boxSize/3;
     margin-left: -($boxSize/4);
-    position: fixed;
+    position: absolute;
     z-index: 2;
 }
 
@@ -85,7 +86,7 @@
     width: $boxSize/3;
     height: $boxSize/2;
     margin-top: $boxSize/4;
-    position: fixed;
+    position: absolute;
     z-index: 2;
 }
 
@@ -97,7 +98,7 @@
     width: $boxSize/3;
     height: $boxSize/2;
     margin-top: -($boxSize/4);
-    position: fixed;
+    position: absolute;
     z-index: 2;
 }
 
@@ -137,6 +138,7 @@
 .status{
     margin-top: 2%;
     font-size: 25px;
+    text-align: center;
 }
 
 .playerMessage {

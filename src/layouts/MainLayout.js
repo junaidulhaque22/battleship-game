@@ -1,13 +1,17 @@
-import React from 'react'
-import PlayingGrid from './../components/PlayingGrid/PlayingGrid'
-
+import React from 'react';
+import { useSelector } from 'react-redux';
+import Navbar from '../components/Navbar/Navbar';
+import PlayingGrid from '../components/PlayingGrid/PlayingGrid';
+import Menu from '../components/Menu/Menu';
 
 const MainLayout = () => {
-    return(
+    const gameStart = useSelector((state) => state.startGame);
+    return (
         <div>
-            <PlayingGrid></PlayingGrid>
+            <Navbar> </Navbar>
+            {gameStart ? <PlayingGrid></PlayingGrid> : <Menu></Menu>}
         </div>
-    )
-}
+    );
+};
 
-export default MainLayout
+export default MainLayout;

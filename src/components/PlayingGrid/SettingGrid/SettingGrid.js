@@ -1,10 +1,9 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     setLocationInfo, setShipLocation, setGameState, toggleP1Ready, GameStates,
 } from '../../../actions';
 import SettingSquare from './SettingSquare/SettingSquare';
-import { shipInfo, num } from '../../../config';
 
 import UndoIcon from '../../../assets/icons/undo-24px.svg';
 import DoneIcon from '../../../assets/icons/done-24px.svg';
@@ -13,18 +12,21 @@ import '../PlayingGrid.scss';
 
 const SettingGrid = ({ playerNum, active }) => {
     const dispatch = useDispatch();
+    const cpuMode = useSelector((state) => state.cpuMode);
+    const shipInfo = useSelector((state) => state.shipInfo);
+    const gridSize = useSelector((state) => state.gridSize);
     // There are 2 ships.
     // 1. Horizontal length 2
     // 2. Vertical length 2
-    const [displayGrid, setDisplayGrid] = React.useState(new Array(num).fill('n').map(() => new Array(num).fill('n')));
+    const [displayGrid, setDisplayGrid] = React.useState(new Array(gridSize).fill('n').map(() => new Array(gridSize).fill('n')));
     const [shipData, setShipData] = React.useState([]);
-    const [idGrid, setIdGrid] = React.useState(new Array(num).fill(-1).map(() => new Array(num).fill(-1)));
+    const [idGrid, setIdGrid] = React.useState(new Array(gridSize).fill(-1).map(() => new Array(gridSize).fill(-1)));
     const [shipsPlaced, setShipsPlaced] = React.useState(0);
     const [playerMessage, setPlayerMessage] = React.useState('');
 
     const updateGridInfo = () => {
-        const tempDisplayInfo = new Array(num).fill('n').map(() => new Array(num).fill('n'));
-        const tempIdGrid = new Array(num).fill(-1).map(() => new Array(num).fill(-1));
+        const tempDisplayInfo = new Array(gridSize).fill('n').map(() => new Array(gridSize).fill('n'));
+        const tempIdGrid = new Array(gridSize).fill(-1).map(() => new Array(gridSize).fill(-1));
         shipData.forEach((ship, index) => {
             if (shipInfo[index].horizontal) {
                 tempDisplayInfo[ship.y][ship.x] = 'hs';
@@ -53,11 +55,11 @@ const SettingGrid = ({ playerNum, active }) => {
         if (shipInfo[index]) {
             // Out of Bounds
             if (shipInfo[index].horizontal) {
-                if (xVal + shipInfo[index].length > num) {
+                if (xVal + shipInfo[index].length > gridSize) {
                     setPlayerMessage('Ship is out of bounds');
                     return false;
                 }
-            } else if (yVal + shipInfo[index].length > num) {
+            } else if (yVal + shipInfo[index].length > gridSize) {
                 setPlayerMessage('Ship is out of bounds');
                 return false;
             }
@@ -69,7 +71,7 @@ const SettingGrid = ({ playerNum, active }) => {
                 tempShipGrid.push({ y: yVal, x: xVal });
                 tempShipGrid.push({ y: yVal + 1, x: xVal });
             }
-            for (let i = 0; i < tempShipGrid.length; i++) {
+            for (let i = 0; i < tempShipGrid.length; i += 1) {
                 const item = tempShipGrid[i];
                 if (idGrid[item.y][item.x] !== -1) {
                     setPlayerMessage('There is a collision between ships');
@@ -93,8 +95,10 @@ const SettingGrid = ({ playerNum, active }) => {
     const endSetting = () => {
         dispatch(setLocationInfo(idGrid, playerNum));
         dispatch(setShipLocation(shipData, playerNum));
-        if (playerNum === 0) dispatch(toggleP1Ready());
-        else dispatch(setGameState(GameStates.GAME));
+        if (playerNum === 0) {
+            dispatch(toggleP1Ready());
+            if (cpuMode) dispatch(setGameState(GameStates.GAME));
+        } else dispatch(setGameState(GameStates.GAME));
     };
 
     const handleReadyClick = () => {
@@ -118,8 +122,8 @@ const SettingGrid = ({ playerNum, active }) => {
                 {playerMessage}
             </div>
             {
-                [...Array(num)].map((e, i) => <div className="boxRow" key={i}>
-                    {[...Array(num)].map((e, j) => <SettingSquare key={j.toString() + i.toString()}
+                [...Array(gridSize)].map((e, i) => <div className="boxRow" key={i}>
+                    {[...Array(gridSize)].map((e, j) => <SettingSquare key={j.toString() + i.toString()}
                         shipHover={shipInfo[shipsPlaced]}
                         shipType={displayGrid[i][j]}
                         visible={active}
