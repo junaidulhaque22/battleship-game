@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/battleship-game/static/css/main.cf72b78f.chunk.css",
+    "main.js": "/battleship-game/static/js/main.c68d26ea.chunk.js",
+    "main.js.map": "/battleship-game/static/js/main.c68d26ea.chunk.js.map",
+    "runtime-main.js": "/battleship-game/static/js/runtime-main.71a699a1.js",
+    "runtime-main.js.map": "/battleship-game/static/js/runtime-main.71a699a1.js.map",
+    "static/js/2.cf81fd4e.chunk.js": "/battleship-game/static/js/2.cf81fd4e.chunk.js",
+    "static/js/2.cf81fd4e.chunk.js.map": "/battleship-game/static/js/2.cf81fd4e.chunk.js.map",
+    "index.html": "/battleship-game/index.html",
+    "precache-manifest.b8244278fa7bad82230e95dca96218e9.js": "/battleship-game/precache-manifest.b8244278fa7bad82230e95dca96218e9.js",
+    "service-worker.js": "/battleship-game/service-worker.js",
+    "static/css/main.cf72b78f.chunk.css.map": "/battleship-game/static/css/main.cf72b78f.chunk.css.map",
+    "static/js/2.cf81fd4e.chunk.js.LICENSE.txt": "/battleship-game/static/js/2.cf81fd4e.chunk.js.LICENSE.txt",
+    "static/media/battleship.png": "/battleship-game/static/media/battleship.c1427546.png",
+    "static/media/done-24px.svg": "/battleship-game/static/media/done-24px.ce59afd4.svg",
+    "static/media/invertedBattleship.png": "/battleship-game/static/media/invertedBattleship.3736a904.png",
+    "static/media/refresh-24px.svg": "/battleship-game/static/media/refresh-24px.aae49de0.svg",
+    "static/media/undo-24px.svg": "/battleship-game/static/media/undo-24px.7d953db9.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.71a699a1.js",
+    "static/js/2.cf81fd4e.chunk.js",
+    "static/css/main.cf72b78f.chunk.css",
+    "static/js/main.c68d26ea.chunk.js"
+  ]
+}
