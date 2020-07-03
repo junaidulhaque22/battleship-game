@@ -9,3 +9,5 @@ Just install and run!
 ### yarn
 ### yarn start
 
+## Demo
+https://junaidulhaque22.github.io/battleship-game/
