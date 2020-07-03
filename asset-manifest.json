@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/battleship-game/static/css/main.cf72b78f.chunk.css",
-    "main.js": "/battleship-game/static/js/main.c68d26ea.chunk.js",
-    "main.js.map": "/battleship-game/static/js/main.c68d26ea.chunk.js.map",
+    "main.js": "/battleship-game/static/js/main.d7b8119b.chunk.js",
+    "main.js.map": "/battleship-game/static/js/main.d7b8119b.chunk.js.map",
     "runtime-main.js": "/battleship-game/static/js/runtime-main.71a699a1.js",
     "runtime-main.js.map": "/battleship-game/static/js/runtime-main.71a699a1.js.map",
     "static/js/2.cf81fd4e.chunk.js": "/battleship-game/static/js/2.cf81fd4e.chunk.js",
     "static/js/2.cf81fd4e.chunk.js.map": "/battleship-game/static/js/2.cf81fd4e.chunk.js.map",
     "index.html": "/battleship-game/index.html",
-    "precache-manifest.b8244278fa7bad82230e95dca96218e9.js": "/battleship-game/precache-manifest.b8244278fa7bad82230e95dca96218e9.js",
+    "precache-manifest.9269f6a20452476e0998de9bcbe86e73.js": "/battleship-game/precache-manifest.9269f6a20452476e0998de9bcbe86e73.js",
     "service-worker.js": "/battleship-game/service-worker.js",
     "static/css/main.cf72b78f.chunk.css.map": "/battleship-game/static/css/main.cf72b78f.chunk.css.map",
     "static/js/2.cf81fd4e.chunk.js.LICENSE.txt": "/battleship-game/static/js/2.cf81fd4e.chunk.js.LICENSE.txt",
@@ -22,6 +22,6 @@
     "static/js/runtime-main.71a699a1.js",
     "static/js/2.cf81fd4e.chunk.js",
     "static/css/main.cf72b78f.chunk.css",
-    "static/js/main.c68d26ea.chunk.js"
+    "static/js/main.d7b8119b.chunk.js"
   ]
 }
