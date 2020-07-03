@@ -20,7 +20,7 @@ const PlayingGrid = () => {
     return (
         <div>
             <div className="status">
-                {gameState === GameStates.P1COMPLETE && 'Player 2 Wins'}
+                {gameState === GameStates.P1COMPLETE && (cpuMode ? 'CPU wins' : 'Player 2 Wins')}
                 {gameState === GameStates.P2COMPLETE && 'Player 1 Wins'}
                 {gameState === GameStates.SETTING && 'Select boxes to place your ships'}
                 {gameState === GameStates.GAME && 'Select a box to fire'}
