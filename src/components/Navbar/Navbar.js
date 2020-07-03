@@ -13,7 +13,9 @@ const Navbar = () => {
                     <div>BATTLESHIP</div>
                 </div>
                 <div>
-                    <img className='navbarIcon' src={GitIcon} />
+                    <a href="https://github.com/junaidulhaque22/battleship-game" target="_blank" rel="noreferrer">
+                        <img className='navbarIcon' src={GitIcon} />
+                    </a>
                 </div>
             </div>
         </div>
